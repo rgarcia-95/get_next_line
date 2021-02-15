@@ -6,7 +6,7 @@
 /*   By: rgarcia- <rgarcia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 19:44:43 by rgarcia-          #+#    #+#             */
-/*   Updated: 2020/09/11 20:01:02 by rgarcia-         ###   ########.fr       */
+/*   Updated: 2021/02/15 11:39:14 by rgarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static int	ft_aux(char **aux, char **line, ssize_t reader)
 		str = ft_strdup(str);
 		*line = ft_strdup(*aux);
 		free(*aux);
+		*aux = NULL;
 		*aux = str;
 		return (1);
 	}
@@ -53,6 +54,7 @@ int			get_next_line(int fd, char **line)
 		{
 			join = ft_strjoin(aux[fd], buffer);
 			free(aux[fd]);
+			aux[fd] = NULL;
 			aux[fd] = join;
 		}
 		if (ft_strchr(aux[fd], '\n'))
